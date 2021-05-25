@@ -39,6 +39,8 @@ class AppBody extends StatefulWidget {
 
 class _AppBodyState extends State<AppBody> {
   final _formKey = GlobalKey<FormState>();
+  bool isChecked = false;
+  String errorMessage = '';
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -124,14 +126,39 @@ class _AppBodyState extends State<AppBody> {
                 title: ElevatedButton(
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
-                    if (_formKey.currentState.validate()) {
-                      this._formKey.currentState.save();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Data Submit.')));
+                    if (isChecked) {
+                      setState(() {
+                        errorMessage = '';
+                      });
+                      if (_formKey.currentState.validate()) {
+                        this._formKey.currentState.save();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Data Submit.')));
+                      }
+                    } else {
+                      setState(() {
+                        errorMessage = 'Kindly accept the terms & conditions.';
+                      });
                     }
                   },
                   child: Text('Register'),
                 ),
+              ),
+              Text(
+                errorMessage,
+                style: kErrorMessageStyle,
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                      value: isChecked,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isChecked = value;
+                        });
+                      }),
+                  Text('I accept the terms & conditions.')
+                ],
               ),
             ],
           ),
