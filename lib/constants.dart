@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-final kHeadingTextStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-final kTextFieldStyle = TextStyle(fontSize: 20);
-final klabelStyle = TextStyle(fontSize: 20);
-final kErrorStyle = TextStyle(fontSize: 15);
-final kErrorMessageStyle = TextStyle(color: Colors.red);
+const kHeadingTextStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+const kTextFieldStyle = TextStyle(fontSize: 20);
+const klabelStyle = TextStyle(fontSize: 20);
+const kErrorStyle = TextStyle(fontSize: 15);
+const kErrorMessageStyle = TextStyle(color: Colors.red);
+final kButtonStyle = ButtonStyle(
+  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(18.0),
+      side: BorderSide(color: Colors.teal),
+    ),
+  ),
+);

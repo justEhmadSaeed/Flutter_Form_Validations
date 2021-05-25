@@ -153,26 +153,28 @@ class _AppBodyState extends State<AppBody> {
               SizedBox(
                 height: 20,
               ),
-              ListTile(
-                title: ElevatedButton(
+              Container(
+                height: 40,
+                child: ElevatedButton(
+                  child: Text('Register'),
+                  style: kButtonStyle,
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (isChecked) {
                       setState(() {
                         errorMessage = '';
                       });
-                      if (_formKey.currentState.validate()) {
-                        this._formKey.currentState.save();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Data Submit.')));
-                      }
                     } else {
                       setState(() {
                         errorMessage = 'Kindly accept the terms & conditions.';
                       });
                     }
+                    if (_formKey.currentState.validate() && isChecked) {
+                      this._formKey.currentState.save();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Data Submit.')));
+                    }
                   },
-                  child: Text('Register'),
                 ),
               ),
               Text(
