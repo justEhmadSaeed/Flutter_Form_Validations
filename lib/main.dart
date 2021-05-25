@@ -59,28 +59,42 @@ class _AppBodyState extends State<AppBody> {
                 'Signup to experience new ways',
                 style: TextStyle(color: Colors.grey, fontSize: 20),
               ),
-              TextFormField(
-                style: kTextFieldStyle,
-                decoration: InputDecoration(
-                    labelText: 'Username',
-                    labelStyle: klabelStyle,
-                    prefixIcon: Icon(Icons.account_circle)),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please Enter Some Text';
-                  }
-                  return null;
-                },
+              SizedBox(
+                height: 20,
               ),
               TextFormField(
                 style: kTextFieldStyle,
                 decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    labelStyle: klabelStyle,
-                    prefixIcon: Icon(Icons.email)),
+                  labelText: 'Username',
+                  labelStyle: klabelStyle,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  prefixIcon: Icon(Icons.account_circle),
+                  errorStyle: kErrorStyle,
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter username';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                style: kTextFieldStyle,
+                decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  labelStyle: klabelStyle,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  prefixIcon: Icon(Icons.email),
+                  errorStyle: kErrorStyle,
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty)
-                    return 'Please Enter Some Text';
+                    return 'Please enter email address';
                   else {
                     RegExp regExp = new RegExp(
                         r'^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$');
@@ -91,29 +105,43 @@ class _AppBodyState extends State<AppBody> {
                   return null;
                 },
               ),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 style: kTextFieldStyle,
                 decoration: InputDecoration(
-                    labelText: 'Mobile No.',
-                    labelStyle: klabelStyle,
-                    prefixIcon: Icon(Icons.phone)),
+                  labelText: 'Mobile No.',
+                  labelStyle: klabelStyle,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  prefixIcon: Icon(Icons.phone),
+                  errorStyle: kErrorStyle,
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please Enter Mobile Number.';
+                    return 'Please enter Mobile Number.';
                   } else if (value.toString().length != 11)
                     return 'Mobile No. must be equal to 11.';
                   return null;
                 },
               ),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 style: kTextFieldStyle,
                 decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: klabelStyle,
-                    prefixIcon: Icon(Icons.lock)),
+                  labelText: 'Password',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  labelStyle: klabelStyle,
+                  prefixIcon: Icon(Icons.lock),
+                  errorStyle: kErrorStyle,
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty)
-                    return 'Please Enter Some Text';
+                    return 'Please enter Password';
                   else if (value.toString().length < 5)
                     return 'Password length must be greater than or equal to 5.';
                   else if (!RegExp(r'^[a-zA-Z0-9]+$')
@@ -121,6 +149,9 @@ class _AppBodyState extends State<AppBody> {
                     return 'Password must contain only alphabets & digits.';
                   return null;
                 },
+              ),
+              SizedBox(
+                height: 20,
               ),
               ListTile(
                 title: ElevatedButton(
